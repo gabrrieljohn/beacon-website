@@ -11,7 +11,7 @@ const STEPS = [
   {
     num: '02',
     title: "We Show Up Prepared. Not Winging It.",
-    desc: "Most strategy calls are improvised. Ours aren't. Before we ever speak, we review your current marketing, study your competitors, and map your market — so we arrive knowing exactly where the gaps and opportunities are. You'll feel the difference in the first 30 seconds.",
+    desc: "Most strategy calls are improvised. Ours aren't. Before we ever speak, we review your current marketing, study your competitors, and map your market — so we arrive knowing exactly where the gaps and opportunities are. You'll feel the difference in the first 30\u00A0seconds.",
     side: 'right',
   },
   {
