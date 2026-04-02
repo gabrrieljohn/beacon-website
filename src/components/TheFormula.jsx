@@ -88,7 +88,7 @@ export default function TheFormula() {
                   {/* Center: number + connector */}
                   <div className="formula-step-center">
                     <motion.div
-                      className="step-number-bubble"
+                      className={`step-number-bubble${i === STEPS.length - 1 ? ' step-bubble-final' : ''}`}
                       initial={{ opacity: 0, scale: 0.5 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
                       transition={{ duration: 0.5, delay: 0.15 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
