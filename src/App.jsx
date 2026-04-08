@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import AnimatedBackground from './components/AnimatedBackground'
 import NavBar from './components/NavBar'
 import HeroSection from './components/HeroSection'
@@ -8,8 +9,13 @@ import TheFormula from './components/TheFormula'
 import FinalPull from './components/FinalPull'
 import FaqSection from './components/FaqSection'
 import Footer from './components/Footer'
+import PrivacyPolicy from './components/PrivacyPolicy'
+import TermsOfService from './components/TermsOfService'
 
 export default function App() {
+  const [privacyOpen, setPrivacyOpen] = useState(false)
+  const [termsOpen, setTermsOpen] = useState(false)
+
   return (
     <>
       <AnimatedBackground />
@@ -22,8 +28,10 @@ export default function App() {
         <TheFormula />
         <FinalPull />
         <FaqSection />
-        <Footer />
+        <Footer onPrivacyClick={() => setPrivacyOpen(true)} onTermsClick={() => setTermsOpen(true)} />
       </div>
+      <PrivacyPolicy isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
+      <TermsOfService isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
     </>
   )
 }

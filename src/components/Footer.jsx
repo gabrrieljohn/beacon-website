@@ -3,7 +3,7 @@ const scrollTo = (id) => {
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
 
-export default function Footer() {
+export default function Footer({ onPrivacyClick, onTermsClick }) {
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer-inner">
@@ -62,8 +62,8 @@ export default function Footer() {
         <div className="footer-bottom">
           <p className="footer-copy">© 2024 Beacon Media Co. All rights reserved.</p>
           <div className="footer-legal">
-            <a href="#" id="footer-privacy">Privacy Policy</a>
-            <a href="#" id="footer-terms">Terms of Service</a>
+            <a href="#" id="footer-privacy" onClick={(e) => { e.preventDefault(); onPrivacyClick() }}>Privacy Policy</a>
+            <a href="#" id="footer-terms" onClick={(e) => { e.preventDefault(); onTermsClick() }}>Terms of Service</a>
           </div>
         </div>
       </div>
