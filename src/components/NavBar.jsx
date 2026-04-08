@@ -87,7 +87,7 @@ export default function NavBar() {
       </ul>
 
       {/* CTA */}
-      <a id="nav-book-call" href="#" className="btn-book-call" aria-label="Book a strategy call">
+      <a id="nav-book-call" href="https://calendly.com/admin-beaconmedia-co/30min" target="_blank" rel="noopener noreferrer" className="btn-book-call" aria-label="Book a strategy call">
         Book a Call
       </a>
     </nav>

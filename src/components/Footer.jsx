@@ -46,7 +46,7 @@ export default function Footer() {
             <div className="footer-link-group">
               <div className="footer-link-heading">Work With Us</div>
               <ul className="footer-link-list">
-                <li><a href="#" id="footer-book-call">Book a Call</a></li>
+                <li><a href="https://calendly.com/admin-beaconmedia-co/30min" target="_blank" rel="noopener noreferrer" id="footer-book-call">Book a Call</a></li>
               </ul>
             </div>
           </div>

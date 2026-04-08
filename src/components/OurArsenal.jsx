@@ -138,7 +138,9 @@ export default function OurArsenal() {
             <p className="arsenal-cta-label">Ready to Deploy?</p>
             <a
               id="arsenal-cta-btn"
-              href="#"
+              href="https://calendly.com/admin-beaconmedia-co/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-cta-glow"
               aria-label="Claim your free strategy session"
             >

@@ -110,7 +110,7 @@ export default function HeroSection() {
           animate={phase === 'done' ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
         >
-          <a id="hero-ignite-btn" href="#" className="btn-primary-hero" aria-label="Ignite your business growth">
+          <a id="hero-ignite-btn" href="https://calendly.com/admin-beaconmedia-co/30min" target="_blank" rel="noopener noreferrer" className="btn-primary-hero" aria-label="Ignite your business growth">
             IGNITE GROWTH
           </a>
         </motion.div>

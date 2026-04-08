@@ -56,7 +56,9 @@ export default function USPSection() {
             <motion.div variants={fadeUp}>
               <a
                 id="usp-free-strategy-btn"
-                href="#"
+                href="https://calendly.com/admin-beaconmedia-co/30min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-cta-glow"
                 aria-label="Get your free tailored marketing strategy"
               >

@@ -115,7 +115,7 @@ export default function StrategySection() {
           </motion.p>
 
           <motion.div variants={fadeUp}>
-            <a id="strategy-free-btn" href="#" className="btn-secondary" aria-label="Get your free strategy">
+            <a id="strategy-free-btn" href="https://calendly.com/admin-beaconmedia-co/30min" target="_blank" rel="noopener noreferrer" className="btn-secondary" aria-label="Get your free strategy">
               Get My Free Strategy →
             </a>
           </motion.div>

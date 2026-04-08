@@ -44,7 +44,9 @@ export default function FinalPull() {
         >
           <a
             id="final-cta-btn"
-            href="#"
+            href="https://calendly.com/admin-beaconmedia-co/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="fp-cta-btn"
             aria-label="Claim your free strategy session"
           >
