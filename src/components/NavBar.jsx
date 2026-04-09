@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const scrollTo = (id) => {
   const el = document.getElementById(id)
@@ -8,21 +9,24 @@ const scrollTo = (id) => {
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('home')
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isHome = location.pathname === '/'
 
   useEffect(() => {
+    if (!isHome) {
+      setScrolled(true)
+      return
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 40)
-
-      // Update active link based on scroll position
       const sections = ['hero', 'arsenal', 'formula']
       let current = 'home'
       for (const id of sections) {
         const el = document.getElementById(id)
-        if (el) {
-          const rect = el.getBoundingClientRect()
-          if (rect.top <= 120) {
-            current = id === 'hero' ? 'home' : id === 'arsenal' ? 'services' : 'process'
-          }
+        if (el && el.getBoundingClientRect().top <= 120) {
+          current = id === 'hero' ? 'home' : id === 'arsenal' ? 'services' : 'process'
         }
       }
       setActive(current)
@@ -30,13 +34,34 @@ export default function NavBar() {
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isHome])
+
+  const handleNav = (sectionId, label) => {
+    if (isHome) {
+      scrollTo(sectionId)
+    } else {
+      navigate('/', { state: { scrollTo: sectionId } })
+    }
+  }
+
+  const handleLogoClick = () => {
+    if (isHome) {
+      scrollTo('hero')
+    } else {
+      navigate('/')
+    }
+  }
 
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       {/* Logo */}
-      <div className="nav-logo" onClick={() => scrollTo('hero')} role="button" tabIndex={0}
-        onKeyDown={e => e.key === 'Enter' && scrollTo('hero')}>
+      <div
+        className="nav-logo"
+        onClick={handleLogoClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={e => e.key === 'Enter' && handleLogoClick()}
+      >
         <img
           src="/logo.png"
           alt="Beacon Media Co. Logo"
@@ -51,11 +76,11 @@ export default function NavBar() {
         <li>
           <a
             id="nav-home"
-            className={active === 'home' ? 'active' : ''}
-            onClick={() => scrollTo('hero')}
+            className={isHome && active === 'home' ? 'active' : ''}
+            onClick={() => handleNav('hero', 'home')}
             role="button"
             tabIndex={0}
-            onKeyDown={e => e.key === 'Enter' && scrollTo('hero')}
+            onKeyDown={e => e.key === 'Enter' && handleNav('hero', 'home')}
           >
             Home
           </a>
@@ -63,11 +88,11 @@ export default function NavBar() {
         <li>
           <a
             id="nav-services"
-            className={active === 'services' ? 'active' : ''}
-            onClick={() => scrollTo('arsenal')}
+            className={isHome && active === 'services' ? 'active' : ''}
+            onClick={() => handleNav('arsenal', 'services')}
             role="button"
             tabIndex={0}
-            onKeyDown={e => e.key === 'Enter' && scrollTo('arsenal')}
+            onKeyDown={e => e.key === 'Enter' && handleNav('arsenal', 'services')}
           >
             Services
           </a>
@@ -75,11 +100,11 @@ export default function NavBar() {
         <li>
           <a
             id="nav-process"
-            className={active === 'process' ? 'active' : ''}
-            onClick={() => scrollTo('formula')}
+            className={isHome && active === 'process' ? 'active' : ''}
+            onClick={() => handleNav('formula', 'process')}
             role="button"
             tabIndex={0}
-            onKeyDown={e => e.key === 'Enter' && scrollTo('formula')}
+            onKeyDown={e => e.key === 'Enter' && handleNav('formula', 'process')}
           >
             Process
           </a>
@@ -87,7 +112,14 @@ export default function NavBar() {
       </ul>
 
       {/* CTA */}
-      <a id="nav-book-call" href="https://calendly.com/admin-beaconmedia-co/30min" target="_blank" rel="noopener noreferrer" className="btn-book-call" aria-label="Book a strategy call">
+      <a
+        id="nav-book-call"
+        href="https://calendly.com/admin-beaconmedia-co/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-book-call"
+        aria-label="Book a strategy call"
+      >
         Book a Call
       </a>
     </nav>

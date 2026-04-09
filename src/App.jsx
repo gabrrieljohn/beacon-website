@@ -1,37 +1,20 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AnimatedBackground from './components/AnimatedBackground'
 import NavBar from './components/NavBar'
-import HeroSection from './components/HeroSection'
-import StrategySection from './components/StrategySection'
-import USPSection from './components/USPSection'
-import OurArsenal from './components/OurArsenal'
-import TheFormula from './components/TheFormula'
-import FinalPull from './components/FinalPull'
-import FaqSection from './components/FaqSection'
-import Footer from './components/Footer'
-import PrivacyPolicy from './components/PrivacyPolicy'
-import TermsOfService from './components/TermsOfService'
+import HomePage from './pages/HomePage'
+import BlogIndex from './pages/BlogIndex'
+import BlogPost from './pages/BlogPost'
 
 export default function App() {
-  const [privacyOpen, setPrivacyOpen] = useState(false)
-  const [termsOpen, setTermsOpen] = useState(false)
-
   return (
-    <>
+    <BrowserRouter>
       <AnimatedBackground />
       <NavBar />
-      <div className="section-wrapper">
-        <HeroSection />
-        <StrategySection />
-        <USPSection />
-        <OurArsenal />
-        <TheFormula />
-        <FinalPull />
-        <FaqSection />
-        <Footer onPrivacyClick={() => setPrivacyOpen(true)} onTermsClick={() => setTermsOpen(true)} />
-      </div>
-      <PrivacyPolicy isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
-      <TermsOfService isOpen={termsOpen} onClose={() => setTermsOpen(false)} />
-    </>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

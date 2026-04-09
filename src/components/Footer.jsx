@@ -1,9 +1,13 @@
+import { Link, useLocation } from 'react-router-dom'
+
 const scrollTo = (id) => {
   const el = document.getElementById(id)
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function Footer({ onPrivacyClick, onTermsClick }) {
+  const location = useLocation()
+  const isHome = location.pathname === '/'
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer-inner">
@@ -28,9 +32,20 @@ export default function Footer({ onPrivacyClick, onTermsClick }) {
             <div className="footer-link-group">
               <div className="footer-link-heading">Navigate</div>
               <ul className="footer-link-list">
-                <li><a onClick={() => scrollTo('hero')} role="button" tabIndex={0}>Home</a></li>
-                <li><a onClick={() => scrollTo('arsenal')} role="button" tabIndex={0}>Services</a></li>
-                <li><a onClick={() => scrollTo('formula')} role="button" tabIndex={0}>Process</a></li>
+                {isHome ? (
+                  <>
+                    <li><a onClick={() => scrollTo('hero')} role="button" tabIndex={0}>Home</a></li>
+                    <li><a onClick={() => scrollTo('arsenal')} role="button" tabIndex={0}>Services</a></li>
+                    <li><a onClick={() => scrollTo('formula')} role="button" tabIndex={0}>Process</a></li>
+                  </>
+                ) : (
+                  <>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/#arsenal">Services</Link></li>
+                    <li><Link to="/#formula">Process</Link></li>
+                  </>
+                )}
+                <li><Link to="/blog">The Brief</Link></li>
               </ul>
             </div>
 
